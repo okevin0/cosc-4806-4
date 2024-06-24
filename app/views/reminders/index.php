@@ -5,10 +5,29 @@
             <div class="col-lg-12">
                 <h1>Reminders</h1>
                 <p class="lead"> <?= date("F jS, Y"); ?></p>
-                <?php  
-                        print_r($data['reminders']);
-                       // print_r($_SESSION['user_id']);
-                ?>
+                <table class="table table-warning table-striped" >
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Reminder</th>
+                          <th scope="col">Create At</th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                    <tbody>
+                        <?php  
+                            // print reaminders
+                            $num = 1;
+                            foreach ($data['reminders'] as $reminder) {
+                                echo "<tr><td>".$num."</td><td>".$reminder['subject']."</td><td>".$reminder['created_at']."</td><td>Update</td><td>Delete</td></tr>";
+                                $num++;
+                            }
+
+                               // print_r($_SESSION['user_id']);
+                        ?>
+                      </tbody>
+                </table>
             </div>
         </div>
     </div>

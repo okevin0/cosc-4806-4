@@ -44,6 +44,17 @@ if (!isset($_SESSION['auth'])) {
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
+
+      <ul class="navbar-nav me-5 mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Welcome, <?php print_r($_SESSION['username']); ?>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a  class="dropdown-item" href="/logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
