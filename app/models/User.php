@@ -47,6 +47,7 @@ class User {
         } else {
           $_SESSION['auth'] = 1;
           $_SESSION['username'] = ucwords($username);
+          $_SESSION['user_id'] = $rows['id'];
           unset($_SESSION['failedAuth']);
           
           $log_statement->execute([$username, 'good', $login_time]);

@@ -7,10 +7,10 @@ class Reminder {
     }
 
   // Create a reminder, view reminders (read), update existing reminders, and delete reminders
-    public function get_all_reminders () {
+    public function get_all_reminders ($user_id) {
       $db = db_connect();
-      $statement = $db->prepare("select * from reminders;");
-      $statement->execute();
+      $statement = $db->prepare("select * from reminders where user_id = ?;");
+      $statement->execute([$user_id]);
       $rows = $statement->fetch(PDO::FETCH_ASSOC);
       return $rows;
     }
