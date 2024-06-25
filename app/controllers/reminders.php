@@ -17,7 +17,7 @@ class Reminders extends Controller {
       die;
     }
 
-    public function create_reminder(){
+    public function create_reminder() {
       $reminder = $this->model('Reminder');
       $subject = $_REQUEST['subject'];
       $created_at = date("Y-m-d H:i:s");
@@ -27,4 +27,10 @@ class Reminders extends Controller {
       header('Location: /reminders');
     }
 
+    // delete a reminder
+    public function delete($reminder_id) {
+      $reminder = $this->model('Reminder');
+      $reminder->delete_reminder($_SESSION['user_id'], $reminder_id);
+      header('Location: /reminders');
+    }
 }

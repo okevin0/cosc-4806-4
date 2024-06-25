@@ -31,10 +31,10 @@ class Reminder {
       return $rows;
     }
   
-    public function delete_reminder ($reminder_id) {
+    public function delete_reminder ($user_id, $reminder_id) {
       $db = db_connect();
-      $statement = $db->prepare("select * from reminders;");
-      $statement->execute();
+      $statement = $db->prepare("delete from reminders where id = ? and user_id = ?;");
+      $statement->execute([$reminder_id, $user_id]);
       $rows = $statement->fetch(PDO::FETCH_ASSOC);
       return $rows;
     }

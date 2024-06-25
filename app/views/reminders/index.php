@@ -17,13 +17,19 @@
                       </thead>
                     <tbody>
                         <?php  
-                            // print reaminders
+                            // print reaminders, update and delete a reminder
                             $num = 1;
                             foreach ($data['reminders'] as $reminder) {
-                                echo "<tr><td>".$num."</td><td>".$reminder['subject']."</td><td>".$reminder['created_at']."</td><td>Update</td><td>Delete</td></tr>";
+                                echo "<tr>
+                                            <td>".$num."</td>
+                                            <td>".$reminder['subject']."</td>
+                                            <td>".$reminder['created_at']."</td>
+                                            <td>Update</td>";?>
+                                <td><a href="/reminders/delete/<?php echo $reminder['id']; ?>" class="btn btn-danger">Delete</a></td>
+                            </tr> 
+                        <?php
                                 $num++;
                             }
-
                                // print_r($_SESSION['user_id']);
                         ?>
                       </tbody>
