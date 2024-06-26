@@ -23,8 +23,8 @@
                                 echo "<tr>
                                             <td>".$num."</td>
                                             <td>".$reminder['subject']."</td>
-                                            <td>".$reminder['created_at']."</td>
-                                            <td>Update</td>";?>
+                                            <td>".$reminder['created_at']."</td>";?>
+                                <td><a href="/reminders/update/<?php echo $reminder['id']; ?>"class="btn btn-danger">Update</a></td>
                                 <td><a href="/reminders/delete/<?php echo $reminder['id']; ?>" class="btn btn-danger">Delete</a></td>
                             </tr> 
                         <?php

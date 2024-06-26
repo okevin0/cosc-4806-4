@@ -33,4 +33,22 @@ class Reminders extends Controller {
       $reminder->delete_reminder($_SESSION['user_id'], $reminder_id);
       header('Location: /reminders');
     }
+
+    // update reminder index and update existing reminder
+    public function update($reminder_id) {
+      $reminder = $this->model('Reminder');
+      $update_reminder = $reminder->get_reminder_by_id($reminder_id);
+      // print_r($subject['subject']);
+      // die;
+      $this->view('reminders/update/index', [ 'reminder' => $update_reminder ]);
+      die;
+    }
+
+    public function update_reminder() {
+      $reminder = $this->model('Reminder');
+      $subject = $_REQUEST['subject'];
+      $reminder_id = $_REQUEST['reminder_id'];
+      $reminder->update_reminder($_SESSION['user_id'], $reminder_id, $subject);
+      header('Location: /reminders');
+    }
 }
