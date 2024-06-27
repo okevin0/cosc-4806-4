@@ -48,7 +48,28 @@ class Reminders extends Controller {
       $reminder = $this->model('Reminder');
       $subject = $_REQUEST['subject'];
       $reminder_id = $_REQUEST['reminder_id'];
-      $reminder->update_reminder($_SESSION['user_id'], $reminder_id, $subject);
+      $is_completed = $_REQUEST['completed'];
+      
+      if ($is_completed == 1) {
+        $is_completed = 1;
+      } else {
+        $is_completed = 0;
+      }
+      
+      $reminder->update_reminder($_SESSION['user_id'], $reminder_id, $subject,$is_completed);
       header('Location: /reminders');
+    }
+
+    // mark reminder as completed/uncompleted by clicking on the button
+    public function is_completed($reminder_id) {
+      $reminder = $this->model('Reminder');
+      $is_completed = $reminder->get_reminder_by_id($reminder_id);
+      if ($is_completed['completed'] == 1) {
+        $reminder->completed($_SESSION['user_id'], $reminder_id, 0);
+      } else {
+        $reminder->completed($_SESSION['user_id'], $reminder_id, 1);
+      }
+      header('Location: /reminders');
+      
     }
 }

@@ -7,6 +7,9 @@
             <br />
             <textarea id="subject" name="subject" rows="4" cols="50"><?php echo $data['reminder']['subject']; ?></textarea>
             <br />
+            <label>Is Completed</label>
+            <input type="checkbox" name="completed" value="1" class="btn btn-primary" <?php if($data['reminder']['completed'] == 1) {echo "checked";} ?> />
+            <br /><br />
             <input type="submit" value="Submit" class="btn btn-primary"> 
         </div>
     </form>

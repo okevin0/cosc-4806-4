@@ -31,11 +31,11 @@ class Reminder {
       header('Location: /reminders');
     }
   
-    public function update_reminder ($user_id, $reminder_id, $subject) {
+    public function update_reminder ($user_id, $reminder_id, $subject, $is_completed) {
       $db = db_connect();
       // print_r($reminder_id); die;
-      $statement = $db->prepare("update reminders set subject = ? where id = ? and user_id = ?;");
-      $statement->execute([$subject, $reminder_id, $user_id]);
+      $statement = $db->prepare("update reminders set subject = ?, completed = ? where id = ? and user_id = ?;");
+      $statement->execute([$subject, $is_completed, $reminder_id, $user_id]);
       $rows = $statement->fetch(PDO::FETCH_ASSOC);
       return $rows;
     }
@@ -48,5 +48,12 @@ class Reminder {
       return $rows;
     }
   
+    public function completed ($user_id, $reminder_id, $completed) {
+      $db = db_connect();
+      $statement = $db->prepare("update reminders set completed = ? where id = ? and user_id = ?;");
+      $statement->execute([$completed, $reminder_id, $user_id]);
+      $rows = $statement->fetch(PDO::FETCH_ASSOC);
+      return $rows;
+    }
 }
 ?>
