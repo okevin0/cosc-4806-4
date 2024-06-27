@@ -36,8 +36,6 @@ if (!isset($_SESSION['auth'])) {
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="/reminders">All Reminders</a></li>
             <li><a class="dropdown-item" href="/reminders/create">Create Reminder</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
         <li class="nav-item">
